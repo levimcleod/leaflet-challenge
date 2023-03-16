@@ -56,6 +56,7 @@ legend.addTo(myMap);
     // Loop through each feature and create a circle marker
     data.features.forEach(function (feature) {
       var coordinates = feature.geometry.coordinates;
+      var place = feature.properties.place;
       var magnitude = feature.properties.mag;
       var depth = coordinates[2];
       var circleMarker = L.circleMarker([coordinates[1], coordinates[0]], {
@@ -68,7 +69,9 @@ legend.addTo(myMap);
   
       // Add a popup to the marker with the relevant information
       circleMarker.bindPopup(
-        "Magnitude: " +
+        "Place: " +
+        place +
+          "<br>Magnitude: " +
           magnitude +
           "<br>Depth: " +
           depth +
